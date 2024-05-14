@@ -1,0 +1,41 @@
+= cicd-demo
+
+== 前提
+* コマンドを実行する環境にpythonがインストールされていること
+* python関連の必要なパッケージがインストールされていること（以下のコマンドを実行する）
++
+[source, bash]
+----
+pip install --upgrade -r ./requirements.txt
+----
+
+
+== アプリケーションの起動と終了
+. 以下のコマンドを実行してアプリケーションを起動する
++
+[source, bash]
+----
+# コンテナを起動する方法
+docker-compose up -d
+
+# 直接FastAPIアプリを起動する方法
+uvicorn app.main:app --host 0.0.0.0 --port 8080
+----
+. http://localhost:8080 にアクセスする
+    ** `Hello World` という文字が表示されれば正常に起動できている
+. 以下のコマンドを実行してアプリケーションを終了する
++
+[source, bash]
+----
+# コンテナを起動した場合
+docker-compose down
+
+# 直接FastAPIアプリを起動した場合
+# コマンド実行した画面で、Ctrl + Cボタンを押下することでアプリケーションを終了する
+----
+
+== テストコード実行
+[source, bash]
+----
+pytest
+----
