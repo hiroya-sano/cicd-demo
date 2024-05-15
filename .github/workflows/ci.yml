@@ -33,8 +33,12 @@ jobs:
       run: |
         pytest
 
-    - name: Build and push Docker image
+    - name: Build Docker image
       env:
         DOCKER_BUILDKIT: 1
       run: |
-        docker build -t my-fastapi-app:latest .
+        docker build -t cicd-demo-app:latest .
+
+    - name: Check Docker image
+      run: |
+        docker image ls | grep -i cicd-demo-app
